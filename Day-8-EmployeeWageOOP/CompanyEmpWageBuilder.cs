@@ -12,6 +12,7 @@ namespace Day_8_EmployeeWageOOP
         public const int IS_Parttime = 1;
         public const int IS_Fulltime = 2;
         public const int Max_Working_Days = 20;
+        public const int Max_Working_Hr = 100;
         public const int EmpRatePerHr = 20;
         public void EmpCheck(string Company)
         {
@@ -20,12 +21,12 @@ namespace Day_8_EmployeeWageOOP
 
             Console.WriteLine(">> Records of" + Company + " Company :\n");
 
-            while (totaldays < Max_Working_Days)
+            while (totaldays < Max_Working_Days && TotalEmpHr <= Max_Working_Hr)
 
             {
                 Random r = new Random(); //TO generate random no
                 int empcheck = r.Next(0, 3);
-
+                
                 switch (empcheck)
                 {
                     case IS_Fulltime:
@@ -49,6 +50,8 @@ namespace Day_8_EmployeeWageOOP
 
 
                 Console.WriteLine("Day:- " + totaldays + " Employee Worked For :- " + emphr + "Hr\n");
+                Console.WriteLine(TotalEmpHr);
+                
             }
 
             Console.WriteLine(">> Total Employee Wage for " + Company + " company is :- " + EmpWage(Company, TotalEmpHr) +"\n");
@@ -58,7 +61,7 @@ namespace Day_8_EmployeeWageOOP
 
         public int EmpWage(string Compnay,int totalEmpHr )
         {
-            int TotalWage = EmpRatePerHr * totalEmpHr;
+            int TotalWage = EmpRatePerHr * totalEmpHr;  //calculating TotalWage
            return TotalWage;
         }
         
