@@ -8,18 +8,19 @@ namespace Day_8_EmployeeWageOOP
 {   
     internal class CompanyEmpWageBuilder : IEmpOps
     {
+         //init instance Variable
             public const int IS_Parttime = 1;
             public const int IS_Fulltime = 2;
             public const int EmpRatePerHr = 20;
             public void EmpCheck(string Company)
-            {
-            int emphr = 0;
+            { //local variable
+                 int emphr = 0;
                   
                
-                    Random r = new Random();
+                    Random r = new Random(); //TO generate random no
                     int empcheck = r.Next(0, 3);
 
-                    switch (empcheck)
+                    switch (empcheck) 
                     {
                         case IS_Fulltime: emphr = 8;
                                           Console.WriteLine(">> Employee of "+Company+" is Present and it is Fulltime Employee ....\n");
@@ -33,7 +34,7 @@ namespace Day_8_EmployeeWageOOP
                                  Console.WriteLine(">> Employee of "+Company+" is Absent....\n");
                                     break;
                     }
-                   int Dailywage = EmpRatePerHr * emphr;
+                   int Dailywage = EmpRatePerHr * emphr; //to Calculate Daily Employee wage
 
 
             Console.WriteLine("Employee Wage of a day to " + Company + " company for current Employee is :- " + Dailywage+"\n");
