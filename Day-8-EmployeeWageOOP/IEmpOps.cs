@@ -11,6 +11,7 @@ namespace Day_8_EmployeeWageOOP
 
         public void EmpCheck(string Compnay);
 
+        public int EmpWage(string Company,int totalEmpHr);
      
     }
         

@@ -5,43 +5,62 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Day_8_EmployeeWageOOP
-{   
+{
     internal class CompanyEmpWageBuilder : IEmpOps
     {
-         //init instance Variable
-            public const int IS_Parttime = 1;
-            public const int IS_Fulltime = 2;
-            public const int EmpRatePerHr = 20;
-            public void EmpCheck(string Company)
-            { //local variable
-                 int emphr = 0;
-                  
-               
-                    Random r = new Random(); //TO generate random no
-                    int empcheck = r.Next(0, 3);
+        //init instance Variable
+        public const int IS_Parttime = 1;
+        public const int IS_Fulltime = 2;
+        public const int Max_Working_Days = 20;
+        public const int EmpRatePerHr = 20;
+        public void EmpCheck(string Company)
+        {
+            //local variable
+            int emphr = 0, totaldays = 0, TotalEmpHr = 0;
 
-                    switch (empcheck) 
-                    {
-                        case IS_Fulltime: emphr = 8;
-                                          Console.WriteLine(">> Employee of "+Company+" is Present and it is Fulltime Employee ....\n");
+            Console.WriteLine(">> Records of" + Company + " Company :\n");
 
-                                           break;
-                        case IS_Parttime:   emphr = 4;
-                                            Console.WriteLine(">> Employee of "+Company+" is Present and it is Parttime Employee ....\n");
-                                             break;
+            while (totaldays < Max_Working_Days)
 
-                        default: emphr = 0;
-                                 Console.WriteLine(">> Employee of "+Company+" is Absent....\n");
-                                    break;
-                    }
-                   int Dailywage = EmpRatePerHr * emphr; //to Calculate Daily Employee wage
+            {
+                Random r = new Random(); //TO generate random no
+                int empcheck = r.Next(0, 3);
+
+                switch (empcheck)
+                {
+                    case IS_Fulltime:
+
+                        emphr = 8;
+                        break;
+
+                    case IS_Parttime:
+
+                        emphr = 4;
+                        break;
+
+                    default:
+
+                        emphr = 0;
+                        break;
+                }
+
+                TotalEmpHr += emphr; //to Calculate total Emp Hours 
+                totaldays++;
 
 
-            Console.WriteLine("Employee Wage of a day to " + Company + " company for current Employee is :- " + Dailywage+"\n");
+                Console.WriteLine("Day:- " + totaldays + " Employee Worked For :- " + emphr + "Hr\n");
             }
 
+            Console.WriteLine(">> Total Employee Wage for " + Company + " company is :- " + EmpWage(Company, TotalEmpHr) +"\n");
+            
 
+        }
 
+        public int EmpWage(string Compnay,int totalEmpHr )
+        {
+            int TotalWage = EmpRatePerHr * totalEmpHr;
+           return TotalWage;
+        }
         
     }
 }
